@@ -1277,7 +1277,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.1, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 636340440}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1450,13 +1450,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636340435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9027237, y: -0.45326194, z: 0.03485694}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -3.57, y: -1.86, z: 0.03485694}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!50 &636340438
 Rigidbody2D:
   serializedVersion: 5
@@ -1518,17 +1518,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.06}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3591666, y: 0.64916664}
+    oldSize: {x: 1.63, y: 0.78}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.36, y: 0.61}
+  m_Size: {x: 1.67, y: 0.64}
   m_EdgeRadius: 0
 --- !u!114 &636340440
 MonoBehaviour:
@@ -1553,6 +1553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 994912188}
+  - component: {fileID: 994912189}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1575,6 +1576,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &994912189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994912187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4fa400661e0554dab6954840815bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruits:
+  - {fileID: 4462246557354648402, guid: 92b3c0b70e323774fb5687b61a1bacf9, type: 3}
+  - {fileID: 4462246557354648402, guid: c5f993d0aeddca24c9d797bcdc12779a, type: 3}
+  - {fileID: 4145097270908439507, guid: 806801b30557c24488ee99a9635ff0a1, type: 3}
+  - {fileID: 4462246557354648402, guid: 8641c2b27b75ed44c825bb3f3ae34423, type: 3}
+  fruitDistance: 2
+  playerDistance: 4
 --- !u!1 &1249635659
 GameObject:
   m_ObjectHideFlags: 0
