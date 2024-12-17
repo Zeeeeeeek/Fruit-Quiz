@@ -50,10 +50,12 @@ public class Controller : MonoBehaviour
         var i = 0;
         var currentQuestion = _questions[_questionIndex];
         
-        Debug.Log(currentQuestion.title);
-        Debug.Log("--------------");
+        var questionTitle = GameObject.FindGameObjectWithTag("Question Title").GetComponent<TMPro.TextMeshProUGUI>();
+        questionTitle.text = currentQuestion.title;
+        
         
         var shuffledFruits = fruits.OrderBy(_ => Random.value).ToList();
+        var shuffledWrongAnswersQueue = new Queue<string>(currentQuestion.wrongAnswer.OrderBy(_ => Random.value));
         
         shuffledFruits.ForEach(fruit =>
         {
@@ -61,12 +63,19 @@ public class Controller : MonoBehaviour
             positions.Add(spawnPosition);
             var spawned = Instantiate(fruit, spawnPosition, Quaternion.identity).GetComponent<Collectible>();
             spawned.onCollect.AddListener(OnFruitCollected);
-            spawned.index = i;
+            var fruitName = fruit.name.First().ToString().ToUpper() + fruit.name[1..];
+            var fruitText = GameObject.FindGameObjectWithTag(fruitName + " answer").GetComponent<TMPro.TextMeshProUGUI>();
             if (i == 0)
             {
-                Debug.Log(fruit.name + " is the correct answer");
+                Debug.Log(fruitName + " is the correct answer");
+                fruitText.text = currentQuestion.answer;
             }
-            i++;
+            else
+            {
+                fruitText.text = shuffledWrongAnswersQueue.Dequeue();
+            }
+
+            spawned.index = i++;
         });
     }
 
