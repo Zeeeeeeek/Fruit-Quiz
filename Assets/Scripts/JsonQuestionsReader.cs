@@ -33,11 +33,19 @@ public class JsonQuestionsReader
             if (request.result == UnityWebRequest.Result.Success)
             {
                 var jsonContent = request.downloadHandler.text;
-
+                jsonContent = RemoveBom(jsonContent);
+                jsonContent = jsonContent.Trim();
                 var wrappedJson = "{ \"questions\": " + jsonContent + " }";
-                var questionWrapper = JsonUtility.FromJson<QuestionWrapper>(wrappedJson);
-
-                callback?.Invoke(questionWrapper.questions);
+                try
+                {
+                    var questionWrapper = JsonUtility.FromJson<QuestionWrapper>(wrappedJson);
+                    callback?.Invoke(questionWrapper.questions);
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"JSON parsing failed: {e.Message}");
+                    callback?.Invoke(new List<Question>());
+                }
             }
             else
             {
@@ -63,5 +71,12 @@ public class JsonQuestionsReader
                 callback?.Invoke(new List<Question>());
             }
         }
+    }
+    
+    private static string RemoveBom(string jsonContent)
+    {
+        // Rimuove il BOM UTF-8 (se presente)
+        var BOM = System.Text.Encoding.UTF8.GetString(new byte[] { 0xEF, 0xBB, 0xBF });
+        return jsonContent.StartsWith(BOM) ? jsonContent.Substring(BOM.Length) : jsonContent;
     }
 }
