@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Fruit
   - Spawner
+  - Question Title
+  - Strawberry answer
+  - Orange answer
+  - Blackberry answer
+  - Banana answer
   layers:
   - Default
   - TransparentFX

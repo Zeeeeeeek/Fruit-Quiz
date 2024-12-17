@@ -26,9 +26,14 @@ public class Controller : MonoBehaviour
         Spawn();
     }
 
-    private bool IsPositionValid(Vector3 pos1, Vector3 pos2)
+    private bool IsPositionFarEnoughFromFruit(Vector3 pos1, Vector3 pos2)
     {
-        return Vector3.Distance(pos1, pos2) > fruitDistance && Vector3.Distance(_playerPosition, pos2) > playerDistance;
+        return Vector3.Distance(pos1, pos2) > fruitDistance;
+    }
+    
+    private bool IsFarEnoughFromPlayer(Vector3 newPosition)
+    {
+        return Vector3.Distance(_playerPosition, newPosition) > playerDistance;
     }
 
     private Vector3 GetValidPositionFromAllPositions(List<Vector3> positions)
@@ -36,7 +41,10 @@ public class Controller : MonoBehaviour
         while (true)
         {
             var newPos = new Vector3(Random.Range(MinX, MaxX), Random.Range(MinY, MaxY), 0);
-            if (positions.All(p => IsPositionValid(p, newPos)))
+            
+            if (!IsFarEnoughFromPlayer(newPos)) continue;
+            
+            if (positions.All(p => IsPositionFarEnoughFromFruit(p, newPos)))
             {
                 return newPos;
             }
