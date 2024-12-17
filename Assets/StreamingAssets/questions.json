@@ -1,12 +1,37 @@
 ﻿[
   {
-    "title": "What is 2+2?",
-    "answer": "4",
-    "wrongAnswer": ["1", "2", "3"]
+    "title": "Nel 1969, Luigi Taborro fondò Sios Srl con una visione che andava oltre la semplice produzione di imballaggi. Qual è l'elemento distintivo che ha reso Sios un pioniere nel settore degli imballaggi in cartone ondulato?",
+    "answer": "Stampa flexografica in quadricromia",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
   },
   {
-    "title": "What is the capital of France?",
-    "answer": "Paris",
-    "wrongAnswer": ["London", "Berlin", "Madrid"]
+    "title": "Sios Srl è sempre stata un punto di riferimento per l'innovazione, ma anche per il rispetto dell’ambiente. Quali sono i valori fondamentali che legano l’azienda alla sostenibilità?",
+    "answer": "Integrato tecnologie green",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
+  },
+  {
+    "title": "Nel corso degli anni, la famiglia Taborro ha mantenuto un legame forte con il territorio di San Severino Marche. Come ha contribuito questo legame alla crescita e al successo di Sios Srl?",
+    "answer": "Sostegno locale",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
+  },
+  {
+    "title": "Cosa significa per Sios Srl riuscire a conciliare innovazione e tradizione, in un settore come quello degli imballaggi, che sembra rimanere ancorato a pratiche consolidate?",
+    "answer": "Qualità artigianale",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
+  },
+  {
+    "title": "Nel corso degli anni, Sios Srl ha ottenuto numerosi successi. Quale traguardo pensi abbia avuto il maggiore impatto sulla sua reputazione internazionale?",
+    "answer": "Esportare i propri prodotti",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
+  },
+  {
+    "title": "Guardando al futuro, quali sono i prossimi passi che potrebbero segnare una nuova fase di innovazione per Sios? E come il concetto di Sostenibilità 5.0 potrebbe essere integrato nei loro processi?",
+    "answer": "AI e Big Data",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
+  },
+  {
+    "title": "La stampa flexografica in quadricromia è una delle tecnologie distintive di Sios Srl. Ma cos’ha di speciale questa tecnica rispetto ad altre forme di stampa?",
+    "answer": "Qualità di stampa elevata ",
+    "wrongAnswer": ["Wrong", "Wrong", "Wrong"]
   }
 ]
