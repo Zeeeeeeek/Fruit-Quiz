@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class JsonQuestionsReader
 {
@@ -18,22 +20,48 @@ public class JsonQuestionsReader
         public List<Question> questions;
     }
 
-    public List<Question> ReadQuestions()
+    public IEnumerator ReadQuestions(System.Action<List<Question>> callback)
     {
         var path = Path.Combine(Application.streamingAssetsPath, "questions.json");
 
-        if (File.Exists(path))
+        // Use UnityWebRequest for WebGL
+        if (path.Contains("://") || path.Contains(":///"))
         {
-            var jsonContent = File.ReadAllText(path);
+            using var request = UnityWebRequest.Get(path);
+            yield return request.SendWebRequest();
 
-            var wrappedJson = "{ \"questions\": " + jsonContent + " }";
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var jsonContent = request.downloadHandler.text;
 
-            var questionWrapper = JsonUtility.FromJson<QuestionWrapper>(wrappedJson);
+                var wrappedJson = "{ \"questions\": " + jsonContent + " }";
+                var questionWrapper = JsonUtility.FromJson<QuestionWrapper>(wrappedJson);
 
-            return questionWrapper.questions;
+                callback?.Invoke(questionWrapper.questions);
+            }
+            else
+            {
+                Debug.LogError($"Error loading file (WebGL): {request.error}");
+                callback?.Invoke(new List<Question>());
+            }
         }
+        else
+        {
+            // Local file
+            if (File.Exists(path))
+            {
+                var jsonContent = File.ReadAllText(path);
 
-        Debug.LogError($"File not found at path: {path}");
-        return new List<Question>();
+                var wrappedJson = "{ \"questions\": " + jsonContent + " }";
+                var questionWrapper = JsonUtility.FromJson<QuestionWrapper>(wrappedJson);
+
+                callback?.Invoke(questionWrapper.questions);
+            }
+            else
+            {
+                Debug.LogError($"File not found at path: {path}");
+                callback?.Invoke(new List<Question>());
+            }
+        }
     }
 }
