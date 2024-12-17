@@ -16,22 +16,12 @@ public class Controller : MonoBehaviour
     private Vector3 _playerPosition;
     
     private List<JsonQuestionsReader.Question> _questions;
+    private int _questionIndex;
 
     private void Start()
     {
         var jsonReader = new JsonQuestionsReader();
         _questions = jsonReader.ReadQuestions();
-        //foreach (var question in _questions)
-        //{
-        //    Debug.Log(question.title);
-        //    Debug.Log(question.answer);
-        //    Debug.Log("Wrong answers:");
-        //    foreach (var wrongAnswer in question.wrongAnswer)
-        //    {
-        //        Debug.Log(wrongAnswer);
-        //    }
-        //    Debug.Log("--------------");
-        //}
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         Spawn();
     }
@@ -58,29 +48,71 @@ public class Controller : MonoBehaviour
         if (fruits == null) return;
         var positions = new List<Vector3>();
         var i = 0;
-        fruits.ForEach(fruit =>
+        var currentQuestion = _questions[_questionIndex];
+        
+        Debug.Log(currentQuestion.title);
+        Debug.Log("--------------");
+        
+        var shuffledFruits = fruits.OrderBy(_ => Random.value).ToList();
+        
+        shuffledFruits.ForEach(fruit =>
         {
             var spawnPosition = GetValidPositionFromAllPositions(positions);
             positions.Add(spawnPosition);
             var spawned = Instantiate(fruit, spawnPosition, Quaternion.identity).GetComponent<Collectible>();
             spawned.onCollect.AddListener(OnFruitCollected);
-            spawned.index = i++;
+            spawned.index = i;
+            if (i == 0)
+            {
+                Debug.Log(fruit.name + " is the correct answer");
+            }
+            i++;
         });
     }
 
-    private static void OnFruitCollected(int fruitIndex)
+    private void OnFruitCollected(int fruitIndex)
     {
-        Debug.Log("Fruit with index " + fruitIndex + " collected");
+        if (fruitIndex == 0)
+        {
+            Debug.Log("Correct answer collected");
+            _questionIndex++;
+            if (_questionIndex >= _questions.Count)
+            {
+                HandleGameOver();
+                return;
+            }
+        }
+        else
+        {
+            Debug.Log("Wrong answer collected");
+        }
+
+        KillAndRespawnFruits();
+    }
+    
+    private void HandleGameOver()
+    {
+        Debug.Log("You won the game!");
+        KillAllFruits();
     }
     
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Space)) return;
+        if (Input.GetKeyDown(KeyCode.Space)) KillAndRespawnFruits();
+    }
+
+    private void KillAndRespawnFruits()
+    {
+        KillAllFruits();
+        Spawn();
+    }
+    
+    private static void KillAllFruits()
+    {
         var allFruits = GameObject.FindGameObjectsWithTag("Fruit");
         foreach (var fruit in allFruits)
         {
             Destroy(fruit);
         }
-        Spawn();
     }
 }
