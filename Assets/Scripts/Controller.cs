@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class FruitSpawner : MonoBehaviour
+public class Controller : MonoBehaviour
 {
     public List<GameObject> fruits;
     public float fruitDistance = 1;
@@ -14,9 +14,24 @@ public class FruitSpawner : MonoBehaviour
     private const float MaxX = 1.6f;
     private const float MinX = -8.6f;
     private Vector3 _playerPosition;
+    
+    private List<JsonQuestionsReader.Question> _questions;
 
     private void Start()
     {
+        var jsonReader = new JsonQuestionsReader();
+        _questions = jsonReader.ReadQuestions();
+        //foreach (var question in _questions)
+        //{
+        //    Debug.Log(question.title);
+        //    Debug.Log(question.answer);
+        //    Debug.Log("Wrong answers:");
+        //    foreach (var wrongAnswer in question.wrongAnswer)
+        //    {
+        //        Debug.Log(wrongAnswer);
+        //    }
+        //    Debug.Log("--------------");
+        //}
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         Spawn();
     }

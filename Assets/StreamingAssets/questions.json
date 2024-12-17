@@ -1,0 +1,12 @@
+﻿[
+  {
+    "title": "What is 2+2?",
+    "answer": "4",
+    "wrongAnswer": ["1", "2", "3"]
+  },
+  {
+    "title": "What is the capital of France?",
+    "answer": "Paris",
+    "wrongAnswer": ["London", "Berlin", "Madrid"]
+  }
+]
