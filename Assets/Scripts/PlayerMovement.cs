@@ -22,4 +22,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + _movement * (movementSpeed * Time.fixedDeltaTime));
     }
+    
+    public void ResetAnimator()
+    {
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", 0);
+        animator.SetFloat("Speed", 0);
+    }
 }

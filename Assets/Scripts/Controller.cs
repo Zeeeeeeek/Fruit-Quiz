@@ -126,6 +126,7 @@ public class Controller : MonoBehaviour
         KillAllFruits();
         winCanvas.SetActive(true);
         var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        playerMovement.ResetAnimator();
         playerMovement.enabled = false;
 
         var confetti = GameObject.FindGameObjectsWithTag("Confetti");
