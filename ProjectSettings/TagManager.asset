@@ -12,6 +12,7 @@ TagManager:
   - Blackberry answer
   - Banana answer
   - Win
+  - Confetti
   layers:
   - Default
   - TransparentFX
