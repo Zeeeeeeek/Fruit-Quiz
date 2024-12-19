@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 65dba5b98ec46e04c880dfb6f28a023e
+guid: 1071be602659b7542af8094e711e614d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4130624527473357792
-    second: Congratulations 2_0
+      213: 2138604563900343685
+    second: Congratulations new_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Congratulations 2_0
+      name: Congratulations new_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 02c4f6390e21da6c0800000000000000
-      internalID: -4130624527473357792
+      spriteID: 5852f422589ddad10800000000000000
+      internalID: 2138604563900343685
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Congratulations 2_0: -4130624527473357792
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

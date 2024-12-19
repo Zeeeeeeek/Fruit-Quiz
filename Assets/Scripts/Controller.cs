@@ -123,11 +123,27 @@ public class Controller : MonoBehaviour
 
     private void HandleGameOver()
     {
-        Debug.Log("You won the game!");
         KillAllFruits();
         winCanvas.SetActive(true);
         var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerMovement.enabled = false;
+
+        var confetti = GameObject.FindGameObjectsWithTag("Confetti");
+        foreach (var c in confetti)
+        {
+            c.GetComponent<VFXTrigger>().TriggerVFX();
+        }
+        
+        var questionTitle = GameObject.FindGameObjectWithTag("Question Title").GetComponent<TMPro.TextMeshProUGUI>();
+        questionTitle.text = "";
+
+        foreach (var fruit in fruits)
+        {
+            var fruitName = fruit.name.First().ToString().ToUpper() + fruit.name[1..];
+            var fruitText = GameObject.FindGameObjectWithTag(fruitName + " answer")
+                .GetComponent<TMPro.TextMeshProUGUI>();
+            fruitText.text = "";
+        }
     }
 #if UNITY_EDITOR
     private void Update()
