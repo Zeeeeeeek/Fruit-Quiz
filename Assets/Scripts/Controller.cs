@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,9 @@ public class Controller : MonoBehaviour
     private List<JsonQuestionsReader.Question> _questions;
     private int _questionIndex;
 
+    [DllImport("__Internal")]
+    private static extern void SendScoreToJS(int score);
+
     private void Start()
     {
         var jsonReader = new JsonQuestionsReader();
@@ -37,7 +41,7 @@ public class Controller : MonoBehaviour
                 Debug.LogError("No questions were loaded. Check the JSON file.");
             }
         }));
-    } 
+    }
 
     private bool IsPositionFarEnoughFromFruit(Vector3 pos1, Vector3 pos2)
     {
@@ -134,17 +138,20 @@ public class Controller : MonoBehaviour
         {
             c.GetComponent<VFXTrigger>().TriggerVFX();
         }
-        
+
         var questionTitle = GameObject.FindGameObjectWithTag("Question Title").GetComponent<TMPro.TextMeshProUGUI>();
         questionTitle.text = "";
 
-        foreach (var fruit in fruits)
+        foreach (var fruitText in fruits.Select(fruit => fruit.name.First().ToString().ToUpper() + fruit.name[1..])
+                     .Select(fruitName => GameObject.FindGameObjectWithTag(fruitName + " answer")
+                         .GetComponent<TMPro.TextMeshProUGUI>()))
         {
-            var fruitName = fruit.name.First().ToString().ToUpper() + fruit.name[1..];
-            var fruitText = GameObject.FindGameObjectWithTag(fruitName + " answer")
-                .GetComponent<TMPro.TextMeshProUGUI>();
             fruitText.text = "";
         }
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+        SendScoreToJS(100);
+#endif
     }
 #if UNITY_EDITOR
     private void Update()
