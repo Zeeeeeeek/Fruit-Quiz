@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 958f42e6e23203646bc366ce1abf8c24
+guid: 5ca752af9a1ab744a9bb3750138be9b7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6893022716972413569
-    second: Mouse_2D_0
+      213: -3385772770369707820
+    second: lifebar_80x80_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mouse_2D_0
+      name: lifebar_80x80_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 163
-        height: 78
+        width: 80
+        height: 76
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 182b6d9e3afe8af50800000000000000
-      internalID: 6893022716972413569
+      spriteID: 4d06ceb9a915301d0800000000000000
+      internalID: -3385772770369707820
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 92674011203127b478b877758119f688
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mouse_2D_0: 6893022716972413569
+      lifebar_80x80_0: -3385772770369707820
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

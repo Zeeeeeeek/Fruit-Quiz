@@ -1,38 +1,47 @@
 ﻿[
   {
-    "title": "Sios Srl è sempre stata un punto di riferimento per l'innovazione, ma anche per il rispetto dell’ambiente. Quali sono i valori fondamentali che legano l’azienda alla sostenibilità?",
-    "answer": "Tecnologie green e imballaggi riciclabili per un approccio sostenibile.",
+    "title": "Qual è lo scopo principale di un firewall?",
+    "answer": "Impedire accessi non autorizzati a una rete privata",
     "wrongAnswer": [
-      "Imballaggi usa e getta scelti per la convenienza, non per l'ambiente.",
-      "Nessuna tecnologia green, solo metodi tradizionali a basso costo.",
-      "Materiali plastici al posto del cartone ondulato, rinunciando alla sostenibilità."
+      "Memorizzare i dati personali in modo sicuro",
+      "Bloccare tutto il traffico Internet in entrata e in uscita",
+      "Aumentare la velocità della connessione Internet"
     ]
   },
   {
-    "title": "Nel corso degli anni, la famiglia Taborro ha mantenuto un legame forte con il territorio di San Severino Marche. Come ha contribuito questo legame alla crescita e al successo di Sios Srl?",
-    "answer": "Radici locali e responsabilità sociale hanno fatto crescere Sios nella comunità.",
+    "title": "Quale delle seguenti è la password più sicura?",
+    "answer": "MyP@ssw0rd!#1",
     "wrongAnswer": [
-      "Investimenti lontani dal territorio, senza legami con la comunità.",
-      "Focus su collaborazioni internazionali, ignorando la realtà locale.",
-      "Distacco completo dal territorio, con attività spostate altrove."
+      "password123",
+      "qwerty2024",
+      "12345678"
     ]
   },
   {
-    "title": "Cosa significa per Sios Srl riuscire a conciliare innovazione e tradizione, in un settore come quello degli imballaggi, che sembra rimanere ancorato a pratiche consolidate?",
-    "answer": "Innovazione tecnologica e artigianalità per imballaggi su misura e performanti.",
+    "title": "Cos'è il phishing?",
+    "answer": "Un tipo di attacco informatico in cui gli hacker ingannano gli utenti per ottenere informazioni sensibili",
     "wrongAnswer": [
-      "Solo tradizione, senza innovazione per preservare l’identità storica.",
-      "Tendenza a seguire il mercato, senza una vera identità.",
-      "Metodi manuali, con processi mai aggiornati."
+      "Un metodo per testare la velocità della rete",
+      "Un modo per memorizzare le password in sicurezza",
+      "Un aggiornamento software per le patch di sicurezza"
     ]
   },
   {
-    "title": "Nel corso degli anni, Sios Srl ha ottenuto numerosi successi. Quale traguardo pensi abbia avuto il maggiore impatto sulla sua reputazione internazionale?",
-    "answer": "Esportazione globale con soluzioni ecologiche e innovative, valorizzando la stampa di precisione.",
+    "title": "Quale delle seguenti opzioni è un esempio di autenticazione multi-fattore (MFA)?",
+    "answer": "Utilizzare un lettore di impronte digitali oltre a una password",
     "wrongAnswer": [
-      "Focus su imballaggi standard, senza personalizzazione.",
-      "Materiali non riciclabili per ridurre i costi.",
-      "Abbandono delle tecnologie avanzate di stampa."
+      "Inserire solo nome utente e password",
+      "Cliccare su 'Ricordami' in un sito web",
+      "Accedere sempre dallo stesso dispositivo"
+    ]
+  },
+  {
+    "title": "Cosa fa una VPN (Virtual Private Network)?",
+    "answer": "Cifra il traffico Internet per migliorare la privacy e la sicurezza",
+    "wrongAnswer": [
+      "Rende la navigazione in Internet completamente anonima",
+      "Previene tutte le infezioni da malware",
+      "Aumenta la velocità della connessione"
     ]
   }
 ]

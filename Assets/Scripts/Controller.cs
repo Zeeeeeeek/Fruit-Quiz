@@ -29,6 +29,7 @@ public class Controller : MonoBehaviour
 
             if (_questions.Count > 0)
             {
+                FindFirstObjectByType<HealthPointsDisplay>().SetHealthPoints(_questions.Count);
                 _playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
                 Spawn();
             }
@@ -116,24 +117,23 @@ public class Controller : MonoBehaviour
         else
         {
             Debug.Log("Wrong answer collected");
+            var hpDisplay = FindFirstObjectByType<HealthPointsDisplay>();
+            hpDisplay.DecreaseHealthPoints();
+            if (hpDisplay.healthPoints <= 0)
+            {
+                HandleGameOver();
+                return;
+            }
         }
-
         KillAndRespawnFruits();
     }
 
     private void HandleGameOver()
     {
         KillAllFruits();
-        winCanvas.SetActive(true);
         var playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         playerMovement.ResetAnimator();
         playerMovement.enabled = false;
-
-        var confetti = GameObject.FindGameObjectsWithTag("Confetti");
-        foreach (var c in confetti)
-        {
-            c.GetComponent<VFXTrigger>().TriggerVFX();
-        }
         
         var questionTitle = GameObject.FindGameObjectWithTag("Question Title").GetComponent<TMPro.TextMeshProUGUI>();
         questionTitle.text = "";
@@ -145,6 +145,25 @@ public class Controller : MonoBehaviour
                 .GetComponent<TMPro.TextMeshProUGUI>();
             fruitText.text = "";
         }
+        
+        var points = FindFirstObjectByType<HealthPointsDisplay>().healthPoints*100/_questions.Count;
+        winCanvas.GetComponentInChildren<TMPro.TextMeshProUGUI>().text =
+            points >= 60 ? "Hai vinto!" : "Hai perso!";
+        winCanvas.SetActive(true);
+        if (points < 60) return;
+        var confetti = GameObject.FindGameObjectsWithTag("Confetti");
+        foreach (var c in confetti)
+        {
+            c.GetComponent<VFXTrigger>().TriggerVFX();
+        }
+    }
+
+    public void OnEndButtonClick()
+    {
+        var points = FindFirstObjectByType<HealthPointsDisplay>().healthPoints*100/_questions.Count;
+        #if UNITY_EDITOR
+        Debug.Log("Points: " + points);
+        #endif
     }
 #if UNITY_EDITOR
     private void Update()
